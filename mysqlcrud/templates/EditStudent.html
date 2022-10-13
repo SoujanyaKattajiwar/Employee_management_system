@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Student Details</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+</head>
+<body>
+<h1>Edit Student Form</h1>
+<table>
+    <form method="POST" action="/update/{{data.id}}">
+        {% csrf_token %}
+    <tr>
+        <td>Student Name<input type="text" name="sname" value="{{data.name}}"></td>
+    </tr>
+    <tr>
+        <td>Student Rollno<input type="text" name="sroll" value="{{data.roll_number}}"></td>
+    </tr>
+    <tr>
+        <td>Student Address<input type="text" name="sadd" value="{{data.address}}"></td>
+    </tr>
+    <tr>
+        <td>Gender:</td>
+        {% if data.gender == 'Male' %}
+        <td><input type="radio" name="gender" value="Male" checked>Male</td>
+        <td><input type="radio" name="gender" value="Female">Female</td>
+        {% elif data.gender == 'Female' %}
+        <td><input type="radio" name="gender" value="Male" >Male</td>
+        <td><input type="radio" name="gender" value="Female" checked>Female</td>
+        {% endif %}
+    </tr>
+    <tr>
+        <td>Language Known:</td>
+        {% if 'English' in data.language %}
+        <td><input type="checkbox" name="language" value="English" checked>English </td>
+        {% else %}
+        <td><input type="checkbox" name="language" value="English">English</td>
+        {% endif %}
+        {% if 'Hindi' in data.language %}
+        <td><input type="checkbox" name="language" value="Hindi" checked>Hindi </td>
+        {% else %}
+        <td><input type="checkbox" name="language" value="Hindi">Hindi</td>
+        {% endif %}
+        {% if 'Marathi' in data.language %}
+        <td><input type="checkbox" name="language" value="Marathi" checked>Marathi </td>
+        {% else %}
+        <td><input type="checkbox" name="language" value="Marathi">Marathi</td>
+        {% endif %}
+        {% if 'Telugu' in data.language %}
+        <td><input type="checkbox" name="language" value="Telugu" checked>Telugu </td>
+        {% else %}
+        <td><input type="checkbox" name="language" value="Telugu">Telugu</td>
+        {% endif %}
+    <tr>
+        <td><button type="submit">UPDATE</button></td>
+    </tr>
+    </form>
+</table>
+
+</body>
+</html>

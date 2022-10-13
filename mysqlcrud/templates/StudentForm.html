@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Form</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+</head>
+<body>
+<h1>Adding Student Detail....!</h1>
+<div class="text-bg-info p-3">
+<table>
+    <form method="POST" action="insert">
+        {% csrf_token %}
+    <tr>
+        <td>Student Name: <input type="text" name="sname"></td>
+    </tr>
+    <tr>
+        <td>Student Rollno: <input type="text" name="sroll"></td>
+    </tr>
+    <tr>
+        <td>Student Address: <input type="text" name="sadd"></td>
+    </tr>
+    <tr>
+        <td>Gender:
+            <input type="radio" name="gender" value="Male">Male
+            <input type="radio" name="gender" value="Female">Female
+        </td>
+    </tr>
+    <tr>
+        <td>Language:
+            <input type="checkbox" name="language" value="English">English
+            <input type="checkbox" name="language" value="Hindi">Hindi
+            <input type="checkbox" name="language" value="Marathi">Marathi
+            <input type="checkbox" name="language" value="Telugu">Telugu
+        </td>
+    </tr>
+    <tr>
+        <td><button type="submit">Submit</button></td>
+    </tr>
+    </form>
+</table>
+</div>
+</body>
+</html>
